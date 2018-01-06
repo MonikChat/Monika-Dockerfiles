@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# The reason we're doing the package install here is to keep everything in one layer for easier downloads
+# It's relatively more convinient this way
+dnf install -y \
+    gcc \
+    ffmpeg \
+    clang \
+    build-essential \
+    git \
+    glibc \
+    systemd \
+    tar \
+    which \
+    make \
+    cmake \
+    openssl-devel \
+    sudo \
+    nss_wrapper \
+    gettext \
+    nodejs
+
+# manually install Python 3.6
+cd /usr/src && \
+   wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz && \
+   tar xzf Python-3.6.3.tgz && \
+   cd Python-3.6.3 && \
+   ./configure --enable-optimizations && \
+   make altinstall && \
+   rm -rf /usr/src/Python-3.6.3.tgz && \
+/usr/bin/python3 -V
+
+# Create user
+adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
+echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
+chmod 0440 /etc/sudoers.d/user
+
+#clone repo, expose Clara as app, then trim contents
+git clone https://github.com/MonikaDesu/monika --bare --depth=10 /opt/monika && \
+mkdir /opt/app && \
+mv /opt/monika/src/Clara/*  /opt/app/ && \
+cp /opt/monika/systemd/*.service /etc/systemd/system/ && \
+echo "
+[Unit]
+
+Description = Monika Gateway
+
+[Service]
+
+ExecStart=/usr/bin/nodejs /opt/app/bot.js
+
+WorkingDirectory=/opt/app
+
+ExecStop= /bin/sleep 3000
+
+[Install]
+
+WantedBy=multi-user.target
+" >> /etc/systemd/system/Monika.Discord.service && \
+rm -rf /opt/Clara 
