@@ -19,5 +19,6 @@ RUN compile_container.sh
 ADD container_run.sh /tmp/
 RUN /tmp/container_run.sh
 
+USER 1000
 CMD ["/tmp/container_run.sh"]
 
