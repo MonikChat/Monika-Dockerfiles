@@ -15,7 +15,7 @@ ENV POEM_HOST ""
 
 # ansible sucks so I'll compile it via this
 ADD compile_container.sh /tmp/
-RUN compile_container.sh
+RUN /tmp/compile_container.sh
 
 ADD passwd_template /tmp/
 ADD container_run.sh /tmp/
