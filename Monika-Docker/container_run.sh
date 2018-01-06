@@ -20,6 +20,9 @@ dnf install -y \
     gettext \
     nodejs
 
+# npm install yo?
+npm i -g pm2
+
 # manually install Python 3.6
 cd /usr/src && \
    wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz && \
@@ -47,7 +50,7 @@ Description = Monika Gateway
 
 [Service]
 
-ExecStart=/usr/bin/nodejs /opt/app/bot.js
+ExecStart=/usr/bin/pm2 start /opt/app/bot.js
 
 WorkingDirectory=/opt/app
 
@@ -57,4 +60,14 @@ ExecStop= /bin/sleep 3000
 
 WantedBy=multi-user.target
 " >> /etc/systemd/system/Monika.Discord.service && \
-rm -rf /opt/Clara 
+rm -rf /opt/Clara
+
+# perm root awau
+chmod g+rw /opt
+chgrp root /opt
+
+# allow to run on openshift
+chown -R user:root /opt/app
+chmod -R g+rw /opt/app
+chmod -R g+rw /home/user
+find /home/user -type d -exec chmod g+x {} +
