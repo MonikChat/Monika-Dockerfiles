@@ -12,10 +12,12 @@ ENV GAME_URL ""
 ENV BOT_OWNER_ID ""
 ENV INSTANCES ""
 ENV POEM_HOST ""
+
 # ansible sucks so I'll compile it via this
 ADD compile_container.sh /tmp/
 RUN compile_container.sh
 
+ADD passwd_template /tmp/
 ADD container_run.sh /tmp/
 RUN /tmp/container_run.sh
 
