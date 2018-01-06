@@ -13,14 +13,13 @@ yum install -y \
     git \
     tar \
     which \
-    make \
     cmake \
     openssl-devel \
     sudo \
     nss_wrapper \
     gettext \
 
-curl --silent --location https://rpm.nodesource.com/setup_9.x | sudo bash -
+curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 yum install -y nodejs
 # npm install yo?
 npm i -g pm2
