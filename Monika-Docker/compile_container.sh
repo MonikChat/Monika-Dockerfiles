@@ -2,7 +2,9 @@
 
 # The reason we're doing the package install here is to keep everything in one layer for easier downloads
 # It's relatively more convinient this way
-dnf install -y \
+
+yum install -y \
+    python2-dnf \
     curl \
     wget \
     gcc \
@@ -17,8 +19,9 @@ dnf install -y \
     sudo \
     nss_wrapper \
     gettext \
-    nodejs
 
+curl --silent --location https://rpm.nodesource.com/setup_9.x | sudo bash -
+yum install -y nodejs
 # npm install yo?
 npm i -g pm2
 
