@@ -8,10 +8,7 @@ dnf install -y \
     gcc \
     ffmpeg \
     clang \
-    build-essential \
     git \
-    glibc \
-    systemd \
     tar \
     which \
     make \
