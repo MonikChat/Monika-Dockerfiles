@@ -5,7 +5,7 @@
 apt update && \
 apt install -y \
     apt-utils \
-    zlib \
+    zlib1g-dev \
     sudo \
     build-essential \
     curl \
