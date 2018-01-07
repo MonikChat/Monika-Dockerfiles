@@ -1,7 +1,7 @@
 # Monika Dockerfile
 # Note: This one does not work on OpenShift. Use the xx-osio tagged images instead
 # Copyright (c) 2018 Clarity. 
-FROM fedora:26
+FROM ubuntu:16.04
 MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
 ENV DISCORD_TOKEN ""
@@ -21,7 +21,6 @@ RUN /tmp/compile_container.sh
 ADD passwd_template /tmp/
 ADD container_run.sh /tmp/
 RUN chmod a+x /tmp/container_run.sh
-RUN /tmp/container_run.sh
 
 USER 1000
 CMD ["/tmp/container_run.sh"]

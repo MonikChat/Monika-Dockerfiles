@@ -3,7 +3,7 @@
 # The reason we're doing the package install here is to keep everything in one layer for easier downloads
 # It's relatively more convinient this way
 
-yum install -y \
+sudo apt install -y \
     python2-dnf \
     curl \
     wget \
@@ -19,8 +19,9 @@ yum install -y \
     nss_wrapper \
     gettext \
 
-curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-yum install -y nodejs
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && \
+sudo apt -y install nodejs
+
 # npm install yo?
 npm i -g pm2
 
@@ -53,6 +54,3 @@ chown -R user:root /opt/app
 chmod -R g+rw /opt/app
 chmod -R g+rw /home/user
 find /home/user -type d -exec chmod g+x {} +
-
-# Clean up
-dnf clean all
