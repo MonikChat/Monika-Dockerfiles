@@ -42,7 +42,8 @@ useradd -u 1000 -G users,sudo -d /home/user --shell /bin/bash -m user && \
 usermod -p "*" user 
 
 #clone repo, expose Clara as app, then trim contents
-git clone https://github.com/MonikaDesu/monika --bare --depth=10 /opt/monika && \
+cd /opt && \
+git clone https://github.com/MonikaDesu/monika && \
 mkdir /opt/app && \
 mv /opt/monika/src/Clara/* /opt/app && \
 rm -rf /opt/Clara
