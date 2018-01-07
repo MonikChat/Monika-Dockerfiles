@@ -4,6 +4,7 @@
 # It's relatively more convinient this way
 apt update && \
 apt install -y \
+    apt-utils \
     sudo \
     build-essential \
     curl \
