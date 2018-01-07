@@ -15,9 +15,10 @@ apt install -y \
     tar \
     which \
     cmake \
+    openssh-server \
     openssl-devel \
     nss_wrapper \
-    gettext \
+    gettext  \
 
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && \
 sudo apt -y install nodejs
@@ -36,9 +37,11 @@ cd /usr/src && \
 /usr/bin/python3 -V
 
 # Create user
-adduser user -u 1000 -g 0 -r -m -d /home/user/ -c "Default Application User" -l
-echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
-chmod 0440 /etc/sudoers.d/user
+mkdir /var/run/sshd && \
+sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
+echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+useradd -u 1000 -G users,sudo -d /home/user --shell /bin/bash -m user && \
+usermod -p "*" user 
 
 #clone repo, expose Clara as app, then trim contents
 git clone https://github.com/MonikaDesu/monika --bare --depth=10 /opt/monika && \
