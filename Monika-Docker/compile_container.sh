@@ -47,7 +47,10 @@ cd /opt && \
 git clone https://github.com/MonikaDesu/monika && \
 mkdir /opt/app && \
 mv /opt/monika/src/Clara/* /opt/app && \
-rm -rf /opt/Clara
+mv /opt/monika/package.json /opt/app && \
+rm -rf /opt/Clara && \
+cd /opt/app && \
+npm i --save --no-prune
 
 # perm root awau
 chmod g+rw /opt
