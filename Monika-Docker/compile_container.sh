@@ -4,7 +4,8 @@
 # It's relatively more convinient this way
 
 sudo apt install -y \
-    python2-dnf \
+    sudo \
+    build-essential \
     curl \
     wget \
     gcc \
@@ -15,7 +16,6 @@ sudo apt install -y \
     which \
     cmake \
     openssl-devel \
-    sudo \
     nss_wrapper \
     gettext \
 
