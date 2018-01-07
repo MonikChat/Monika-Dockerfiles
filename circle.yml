@@ -21,4 +21,4 @@ jobs:
             mv /tmp/docker/* /usr/bin
       - run:
           name: Build Monika's Container
-          command: docker build -t chinodesuuu/monika:f27 ./Monika-Docker
+          command: docker build -t chinodesuuu/monika:non-osio ./Monika-Docker
