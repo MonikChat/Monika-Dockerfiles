@@ -2,7 +2,7 @@
 
 # The reason we're doing the package install here is to keep everything in one layer for easier downloads
 # It's relatively more convinient this way
-
+apt update && \
 apt install -y \
     sudo \
     build-essential \
@@ -46,6 +46,7 @@ usermod -p "*" user
 #clone repo, expose Clara as app, then trim contents
 git clone https://github.com/MonikaDesu/monika --bare --depth=10 /opt/monika && \
 mkdir /opt/app && \
+mv /opt/monika/src/Clara/* /opt/app && \
 rm -rf /opt/Clara
 
 # perm root awau
