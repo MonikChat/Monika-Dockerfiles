@@ -25,7 +25,7 @@ npm i -g pm2
 
 # manually install Python 3.6
 cd /usr/src && \
-   wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tgz && \
+   wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz && \
    tar xzf Python-3.6.3.tgz && \
    cd Python-3.6.3 && \
    ./configure --enable-optimizations && \
