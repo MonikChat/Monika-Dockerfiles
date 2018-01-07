@@ -33,7 +33,7 @@ cd /usr/src && \
    ./configure --enable-optimizations && \
    make altinstall && \
    rm -rf /usr/src/Python-3.6.4.tgz && \
-/usr/bin/python3 -V
+/usr/bin/python3.6 -V
 
 # Create user
 mkdir /var/run/sshd && \
