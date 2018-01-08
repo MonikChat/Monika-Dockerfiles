@@ -22,3 +22,6 @@ jobs:
       - run:
           name: Build Monika's Container
           command: docker build -t chinodesuuu/monika:non-osio ./Monika.NonOpenShift
+      - run:
+          name: Build Sayori's Container
+          command: docker build -t chinodesuuu/sayori:non-osio ./Sayori-Docker
