@@ -2,8 +2,8 @@
 
 # The reason we're doing the package install here is to keep everything in one layer for easier downloads
 # It's relatively more convinient this way
-sudo apt update && \
-sudo apt -y install \
+apt update && \
+apt -y install \
      build-essential \
      gcc \
      zlib1g-dev \
