@@ -8,6 +8,8 @@ apt install -y \
     zlib1g-dev \
     sudo \
     build-essential \
+    software-properties-common \
+    python-software-properties \
     curl \
     wget \
     gcc \
