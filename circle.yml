@@ -8,6 +8,10 @@ jobs:
     docker:
       - image: chinodesuuu/ci-amethyst:latest  
     parallelism: 2  
+    branches:
+      only:
+       - master
+       - dev
     steps:
       - setup_remote_docker
       - checkout
