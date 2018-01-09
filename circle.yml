@@ -3,11 +3,11 @@ version: 2
 notify:
  webhooks:
    - url: https://claraio-circledisc.herokuapp.com/hooks/circleci
-   
 jobs:
   build:
     docker:
       - image: chinodesuuu/ci-amethyst:latest  
+    parallelism: 2  
     steps:
       - setup_remote_docker
       - checkout
