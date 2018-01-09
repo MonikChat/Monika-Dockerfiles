@@ -36,9 +36,9 @@ npm i -g pm2
 
 
 #install Python via APT repo instead
-sudo add-apt-repository ppa:jonathonf/python-3.6 && \
-sudo apt update && \
-sudo apt -y install python3.6
+add-apt-repository ppa:jonathonf/python-3.6 && \
+apt update && \
+apt -y install python3.6
 
 # Create user
 mkdir /var/run/sshd && \

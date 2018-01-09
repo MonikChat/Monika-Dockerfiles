@@ -23,9 +23,9 @@ apt -y install \
      gettext \
 
 #install Python via APT repo instead
-sudo add-apt-repository ppa:jonathonf/python-3.6 && \
-sudo apt update && \
-sudo apt -y install python3.6
+add-apt-repository ppa:jonathonf/python-3.6 && \
+apt update && \
+apt -y install python3.6
 
 #Preinstall Sayori
 cd /opt && \
