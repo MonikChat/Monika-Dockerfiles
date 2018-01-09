@@ -29,8 +29,9 @@ apt -y install python3.6
 
 #Preinstall Sayori
 cd /opt && \
-git clone https://github.com/MonikaDesu/Sayori /opt/app && \
-/bin/sh /opt/app/get_resources.sh && \
+git clone https://github.com/MonikaDesu/Sayori app && \
+cd /opt/app && \
+/bin/sh get_resources.sh && \
 /usr/bin/python3.6 -m pip install -r requirements.txt && \
 rm -rf /opt/app/README.md && \
 rm -rf ./opt/app/gitignore && \
