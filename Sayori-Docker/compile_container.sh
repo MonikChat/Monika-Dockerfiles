@@ -5,6 +5,8 @@
 apt update && \
 apt -y install \
      build-essential \
+     software-properties-common \
+     python-software-properties
      gcc \
      zlib1g-dev \
      sudo \
@@ -20,14 +22,10 @@ apt -y install \
      openssh-server \
      gettext \
 
-# manually install Python 3.6
-cd /usr/src && \
-   wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz && \
-   tar xzf Python-3.6.4.tgz && \
-   cd Python-3.6.4 && \
-   ./configure --enable-optimizations && \
-   make altinstall && \
-   rm -rf /usr/src/Python-3.6.4.tgz && \
+#install Python via APT repo instead
+sudo add-apt-repository ppa:jonathonf/python-3.6 && \
+sudo apt update && \
+sudo apt -y install python3.6
 
 #Preinstall Sayori
 cd /opt && \

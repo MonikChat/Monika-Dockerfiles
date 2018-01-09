@@ -25,14 +25,20 @@ sudo apt -y install nodejs
 npm i -g pm2
 
 # manually install Python 3.6
-cd /usr/src && \
-   wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz && \
-   tar xzf Python-3.6.4.tgz && \
-   cd Python-3.6.4 && \
-   ./configure --enable-optimizations && \
-   make altinstall && \
-   rm -rf /usr/src/Python-3.6.4.tgz && \
-/usr/bin/python3 -V
+#cd /usr/src && \
+#   wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz && \
+#   tar xzf Python-3.6.4.tgz && \
+#   cd Python-3.6.4 && \
+#   ./configure --enable-optimizations && \
+#   make altinstall && \
+#   rm -rf /usr/src/Python-3.6.4.tgz && \
+# /usr/bin/python3 -V
+
+
+#install Python via APT repo instead
+sudo add-apt-repository ppa:jonathonf/python-3.6 && \
+sudo apt update && \
+sudo apt -y install python3.6
 
 # Create user
 mkdir /var/run/sshd && \
