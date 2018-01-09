@@ -6,7 +6,7 @@ apt update && \
 apt -y install \
      build-essential \
      software-properties-common \
-     python-software-properties
+     python-software-properties \
      gcc \
      zlib1g-dev \
      sudo \
