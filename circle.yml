@@ -20,8 +20,8 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       - run:
-          name: Build Monika's Container
-          command: docker build -t chinodesuuu/monika:non-osio ./Monika.NonOpenShift
+          name: Build Monika (Ubuntu)
+          command: docker build -t chinodesuuu/monika:ubuntu ./Monika-Ubuntu
       - run:
-          name: Build Sayori's Container
-          command: docker build -t chinodesuuu/sayori:non-osio ./Sayori-Docker
+          name: Build Sayori (Ubuntu)
+          command: docker build -t chinodesuuu/sayori:ubuntu ./Sayori-Ubuntu
