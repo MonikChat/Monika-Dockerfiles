@@ -29,18 +29,18 @@ apt -y install python3.6
 
 #Preinstall Sayori
 cd /opt && \
-git clone https://github.com/MonikaDesu/Sayori app && \
+git clone https://github.com/MonikaDesu/Sayori /opt/app && \
 /bin/sh /opt/app/get_resources.sh && \
 /usr/bin/python3.6 -m pip install -r requirements.txt && \
-rm -rf README.md && \
-rm -rf .gitignore && \
-rm -rf .flake8 && \
-rm -rf Procfile && \
-rm -rf app.json && \
-rm -rf API.md && \
-rm -rf systemd && \
-rm -rf get_resources.bat && \
-rm -rf get_resources.sh
+rm -rf /opt/app/README.md && \
+rm -rf ./opt/app/gitignore && \
+rm -rf /opt/app/.flake8 && \
+rm -rf /opt/app/Procfile && \
+rm -rf /opt/app/app.json && \
+rm -rf /opt/app/API.md && \
+rm -rf /opt/app/systemd && \
+rm -rf /opt/app/get_resources.bat && \
+rm -rf /opt/app/get_resources.sh
 
 # Create user
 mkdir /var/run/sshd && \
