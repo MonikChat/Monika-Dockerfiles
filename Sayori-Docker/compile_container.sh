@@ -29,6 +29,21 @@ cd /usr/src && \
    make altinstall && \
    rm -rf /usr/src/Python-3.6.4.tgz && \
 
+#Preinstall Sayori
+cd /opt && \
+git clone https://github.com/MonikaDesu/Sayori app && \
+/bin/sh /opt/app/get_resources.sh && \
+/usr/bin/python3.6 -m pip install -r requirements.txt && \
+rm -rf README.md && \
+rm -rf .gitignore && \
+rm -rf .flake8 && \
+rm -rf Procfile && \
+rm -rf app.json && \
+rm -rf API.md && \
+rm -rf systemd && \
+rm -rf get_resources.bat && \
+rm -rf get_resources.sh
+
 # Create user
 mkdir /var/run/sshd && \
 sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
