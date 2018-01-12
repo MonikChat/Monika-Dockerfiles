@@ -31,7 +31,7 @@ apt -y install python3.6
 cd /opt/ && \
 git clone https://github.com/MonikaDesu/Sayori && \
 mkdir /opt/app && \
-mv /opt/Sayori/* /opt/app && \
+cp -r /opt/Sayori/* /opt/app && \
 rm -rf Sayori && \
 cd /opt/app && \
 /bin/sh get_resources.sh && \
