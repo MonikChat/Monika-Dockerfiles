@@ -29,10 +29,10 @@ apt -y install python3.6
 
 #Preinstall Sayori
 cd /opt/ && \
-sh 'git clone https://github.com/MonikaDesu/Sayori app' && \
+git clone https://github.com/MonikaDesu/Sayori app && \
 cd /opt/app && \
 ls && \
-/bin/sh '/opt/app/get_resources.sh' && \
+/bin/sh '/opt/app/get-resources.sh' && \
 /usr/bin/python3.6 -m pip install -r requirements.txt
 
 # Create user
