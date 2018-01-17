@@ -59,9 +59,7 @@ workflows:
   build-n-deploy: 
     jobs:
       - build
-         context: org-global
       - deploy
          requires:
             - build
-         context: org-global
   
