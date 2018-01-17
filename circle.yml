@@ -1,5 +1,4 @@
 version: 2
-
 notify:
  webhooks:
    - url: https://claraio-circledisc.herokuapp.com/hooks/circleci
@@ -7,11 +6,9 @@ jobs:
   build:
     docker:
       - image: chinodesuuu/ci-amethyst:latest  
-    parallelism: 2  
     branches:
       only:
        - master
-       - dev
     steps:
       - setup_remote_docker
       - checkout
@@ -29,3 +26,21 @@ jobs:
       - run:
           name: Build Sayori (Ubuntu)
           command: docker build -t chinodesuuu/sayori:ubuntu ./Sayori-Ubuntu
+
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
+  scheduled-workflow:
+    triggers:
+      - schedule:
+          cron: "0 4* * 0"
+          filters:
+            branches:
+              only: master
+
+    jobs:
+      - build
+
+  
