@@ -4,7 +4,7 @@
 FROM ubuntu:16.04
 MAINTAINER Capuccino <chinodesuuu@gmail.com>
 
-ENV PORT = 8921
+ENV PORT "8921"
 
 # ansible sucks so I'll compile it via this
 ADD compile_container.sh /tmp/
