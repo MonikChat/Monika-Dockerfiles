@@ -46,7 +46,7 @@ jobs:
           name: Docker Pull (Monika)
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/monika:ubuntu
       - run:
-          name: Docker Pusll (Sayori)
+          name: Docker Pull (Sayori)
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/sayori:ubuntu              
       - run:
           name: Docker Push (Monika)
