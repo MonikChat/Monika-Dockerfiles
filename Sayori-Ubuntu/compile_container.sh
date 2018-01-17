@@ -21,6 +21,7 @@ apt -y install \
      cmake \
      openssh-server \
      gettext \
+     python3-pip \
 
 #install Python via APT repo instead
 add-apt-repository ppa:jonathonf/python-3.6 && \
