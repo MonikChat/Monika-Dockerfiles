@@ -49,6 +49,9 @@ workflows:
   commit-workflow:
     jobs:
       - build
+      - deploy:
+          requires:
+             - build
   scheduled-workflow:
     triggers:
       - schedule:
@@ -58,10 +61,12 @@ workflows:
               only: master
     jobs:
       - build
-      - deploy
+      - deploy:
+          requires:
+             - build
   build-n-deploy: 
     jobs:
       - build
       - deploy:
           requires:
-            - test  
+             - build
