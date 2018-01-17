@@ -6,9 +6,6 @@ jobs:
   build:
     docker:
       - image: chinodesuuu/ci-amethyst:latest  
-    branches:
-      only:
-       - master
     steps:
       - setup_remote_docker
       - checkout
