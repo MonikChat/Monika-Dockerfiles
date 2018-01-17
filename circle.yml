@@ -57,7 +57,8 @@ workflows:
             branches:
               only: master
     jobs:
-      - build      
+      - build
+      - deploy
   build-n-deploy: 
     jobs:
       - build
