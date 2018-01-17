@@ -16,12 +16,13 @@ ADD container_run.sh /tmp/
 RUN chmod a+x /tmp/container_run.sh
 
 USER 1000
+EXPOSE 8921
 CMD ["/tmp/container_run.sh"]
 
 
 # Labels for Kubernetes, OpenShift and Atomic
 LABEL io.k8s.description="A PIL-based Poem Generator Service" \
       io.k8s.display-name="Sayori Poem Service" \
-      io.openshift.expose-services="8081:http" \
+      io.openshift.expose-services="8921:http" \
       io.openshift.tags="development, service" \
       io.projectatomic.nulecule.environment.optional="CDN, PORT, PADDING, DEFAULT_BG, DEFAULT_FONT" 
