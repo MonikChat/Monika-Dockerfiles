@@ -56,7 +56,7 @@ workflows:
           filters:
             branches:
               only: master
-
+  build-n-deploy: 
     jobs:
       - build
          context: org-global
