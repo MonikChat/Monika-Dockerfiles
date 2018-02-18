@@ -1,11 +1,11 @@
 version: 2
 notify:
- webhooks:
-   - url: https://claraio-circledisc.herokuapp.com/hooks/circleci
+  webhooks:
+    - url: https://circledisc-clarity.herokuapp.com/webhook/circle
 jobs:
   build:
     docker:
-      - image: chinodesuuu/ci-amethyst:latest  
+      - image: docker/docker  
     steps:
       - setup_remote_docker
       - checkout
@@ -18,22 +18,24 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       - run:
+          name: Build Monika Gateway (Alpine)
+          command: docker build -t claritymoe/monika:alpine ./Monika-Alpine          
+      - run:
           name: Build Monika (Ubuntu)
-          command: docker build -t chinodesuuu/monika:ubuntu ./Monika-Ubuntu
+          command: docker build -t claritymoe/monika:ubuntu ./Monika-Ubuntu            
+          
       - run:
           name: Build Sayori (Ubuntu)
-          command: docker build -t chinodesuuu/sayori:ubuntu ./Sayori-Ubuntu
-      - run:
-          name: Docker Push (Monika)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/monika:ubuntu
-      - run:
-          name: Docker Push (Sayori)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/sayori:ubuntu            
+          command: docker build -t claritymoe/sayori:ubuntu ./Sayori-Ubuntu
+ #     - run:
+ #         name: Build monika (Ubuntu)
+ #         command: docker build -t claritymoe/monika:ubuntu-nightly ./monika-Ubuntu-Nightly
   deploy:
     docker:
-      - image: chinodesuuu/ci-amethyst:latest
+      - image: docker/docker
     steps:
       - setup_remote_docker
+      - checkout
       - run:
           name: Install Docker client
           command: |
@@ -41,41 +43,36 @@ jobs:
             VER="17.05.0-ce"
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin      
+            mv /tmp/docker/* /usr/bin
       - run:
-          name: Docker Pull (Monika)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/monika:ubuntu
+          name: Build Monika (Alpine)
+          command: docker build -t claritymoe/monika:alpine -t claritymoe/monika:latest ./Monika-Alpine
       - run:
-          name: Docker Pull (Sayori)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker pull chinodesuuu/sayori:ubuntu              
+          name: Build Monika (Ubuntu)
+          command: docker build -t claritymoe/monika:ubuntu ./Monika-Ubuntu
       - run:
-          name: Docker Push (Monika)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/monika:ubuntu
+          name: Build Sayori (Ubuntu)
+          command: docker build -t claritymoe/sayori:ubuntu ./Sayori-Ubuntu          
       - run:
-          name: Docker Push (Sayori)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push chinodesuuu/sayori:ubuntu          
-          
-
+          name: Docker Push (Monika Ubuntu)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push claritymoe/monika:ubuntu
+      - run:
+          name: Docker Push (Sayori Ubuntu)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push claritymoe/sayori:ubuntu
+      - run:
+          name: Docker Push (Monika Alpine)
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push claritymoe/monika:alpine && docker push claritymoe/monika:latest
 workflows:
   version: 2
-  commit-workflow:
-    jobs:
-      - build
-      - deploy:
-          requires:
-             - build
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "0 4* * 0"
+          cron: "0 0 * * 0"
           filters:
             branches:
               only: master
     jobs:
-      - build
-      - deploy:
-          requires:
-             - build
+      - deploy
   build-n-deploy: 
     jobs:
       - build
