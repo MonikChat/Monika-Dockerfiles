@@ -5,7 +5,7 @@ notify:
 jobs:
   build:
     docker:
-      - image: docker/docker  
+      - image: chinodesuuu/ci-amethyst:latest  
     steps:
       - setup_remote_docker
       - checkout
@@ -32,7 +32,7 @@ jobs:
  #         command: docker build -t claritymoe/monika:ubuntu-nightly ./monika-Ubuntu-Nightly
   deploy:
     docker:
-      - image: docker/docker
+      - image: chinodesuuu/ci-amethyst:latest
     steps:
       - setup_remote_docker
       - checkout
