@@ -52,3 +52,14 @@ chown -R user:root /opt/app
 chmod -R g+rw /opt/app
 chmod -R g+rw /home/user
 find /home/user -type d -exec chmod g+x {} +
+
+# clean up
+apt -y remove \
+     build-essential \
+     software-properties-common \
+     python-software-properties \
+     zlib1g-dev \
+     git \
+     clang \
+     cmake \
+     openssh-server \

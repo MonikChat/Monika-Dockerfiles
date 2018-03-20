@@ -15,6 +15,7 @@ ADD passwd_template /tmp/
 ADD container_run.sh /tmp/
 RUN chmod a+x /tmp/container_run.sh
 
+VOLUME /opt/app/poems
 USER 1000
 EXPOSE 8921
 CMD ["/tmp/container_run.sh"]
