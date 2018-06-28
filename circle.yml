@@ -21,15 +21,8 @@ jobs:
           name: Build Monika Gateway (Alpine)
           command: docker build -t claritymoe/monika:alpine ./Monika-Alpine          
       - run:
-          name: Build Monika (Ubuntu)
-          command: docker build -t claritymoe/monika:ubuntu ./Monika-Ubuntu            
-          
-      - run:
           name: Build Sayori (Ubuntu)
           command: docker build -t claritymoe/sayori:ubuntu ./Sayori-Ubuntu
- #     - run:
- #         name: Build monika (Ubuntu)
- #         command: docker build -t claritymoe/monika:ubuntu-nightly ./monika-Ubuntu-Nightly
   deploy:
     docker:
       - image: chinodesuuu/ci-amethyst:latest
@@ -53,9 +46,6 @@ jobs:
       - run:
           name: Build Sayori (Ubuntu)
           command: docker build -t claritymoe/sayori:ubuntu ./Sayori-Ubuntu          
-      - run:
-          name: Docker Push (Monika Ubuntu)
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push claritymoe/monika:ubuntu
       - run:
           name: Docker Push (Sayori Ubuntu)
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push claritymoe/sayori:ubuntu
