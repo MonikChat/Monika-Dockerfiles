@@ -41,9 +41,6 @@ jobs:
           name: Build Monika (Alpine)
           command: docker build -t claritymoe/monika:alpine -t claritymoe/monika:latest ./Monika-Alpine
       - run:
-          name: Build Monika (Ubuntu)
-          command: docker build -t claritymoe/monika:ubuntu ./Monika-Ubuntu
-      - run:
           name: Build Sayori (Ubuntu)
           command: docker build -t claritymoe/sayori:ubuntu ./Sayori-Ubuntu          
       - run:
