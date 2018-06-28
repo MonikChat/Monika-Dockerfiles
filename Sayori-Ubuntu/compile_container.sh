@@ -62,4 +62,4 @@ apt -y remove \
      git \
      clang \
      cmake \
-     openssh-server \
+     openssh-server;
